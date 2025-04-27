@@ -1,4 +1,4 @@
-# votingapp_ui_candidateprofile
+# eleksyon
 
 A new Flutter project.
 

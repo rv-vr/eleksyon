@@ -1,4 +1,4 @@
-package com.example.votingapp_ui_candidateprofile
+package com.example.eleksyon
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -92,34 +92,5 @@ final List<Candidate> candidates = [
             "I will promote community engagement through events and activities that encourage collaboration among students.",
       ),
     ],
-  ),
-  Candidate(
-    name: "Ryen Caduada",
-    age: 23,
-    program: "BS Entrepreneurship",
-    year: "4th Year",
-    description:
-        "A dedicated entrepreneurship student with a strong focus on innovation and business development.",
-    partylist: "Spotify top 100 Philippines",
-    runningFor: "Marathon",
-    imagePath: "assets/candidates/RC003.jpg",
-    achievements: ["Best Business Plan 2022", "Startup Pitch Winner 2023", "Mutya ng Chupa 2025"],
-    platforms: [
-      Platform(
-        title: "Facebook Page",
-        description:
-            "I will create a Facebook page to keep students updated on events, resources, and opportunities.",
-      ),
-      Platform(
-        title: "Free Rhinoplasty",
-        description:
-            "I will offer free rhinoplasty to students who need it, ensuring that everyone feels confident and comfortable.",
-      ),
-      Platform(
-        title: "Sex Dungeon",
-        description:
-            "I will establish a safe and inclusive space for students to explore their interests and hobbies.",
-      ),
-    ],
   )
 ];

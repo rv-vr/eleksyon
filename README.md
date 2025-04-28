@@ -3,7 +3,11 @@
 An online voting app designed for any kind of election scenario. 
 Made in the Philippines.
 
+## Main Contributors
 
+1. Vince Omar Rondael, BSCS 2-A
+
+2. Suette Key Simoy, BSCS 2-A
 
 ## Getting Started
 
@@ -36,9 +40,5 @@ This is for partial compliance of requirements in the syllabus of ICT 110. I onl
 1. Database Integration
 2. Layout for wide-screen devices
 
-## Main Contributors
 
-1. Vince Omar Rondael, BSCS 2-A
-
-2. Suette Key Simoy, BSCS 2-A
 

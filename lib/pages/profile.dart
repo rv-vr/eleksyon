@@ -22,6 +22,7 @@ class CandidateProfile extends StatelessWidget {
                 children: [
                   Image(
                     image: AssetImage(candidate.imagePath),
+                    width: double.infinity,
                     fit: BoxFit.cover,
                     ),
                   Positioned(

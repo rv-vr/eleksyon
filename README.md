@@ -1,16 +1,44 @@
 # eleksyon
 
-A new Flutter project.
+An online voting app designed for any kind of election scenario. 
+Made in the Philippines.
+
+
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+### Installation
 
-A few resources to get you started if this is your first Flutter project:
+1. Clone the repository to your local machine
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+2. Import to your editor of choice
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+3. Run `flutter pub get`
+
+4. Done!
+
+## Debugging
+
+### Running on browser (for low-end machines)
+
+1. Run `flutter run -d edge` 
+
+1. Open Developers Tools on your browser
+
+2. Open media emulation and set it to any portrait device (Recommended: Samsung Galaxy S20)
+
+## Disclaimer
+
+This is for partial compliance of requirements in the syllabus of ICT 110. I only did the layout for the candidate list and profiles as it is the main objective of the assignment.
+
+## TO - DO
+
+1. Database Integration
+2. Layout for wide-screen devices
+
+## Main Contributors
+
+1. Vince Omar Rondael, BSCS 2-A
+
+2. Suette Key Simoy, BSCS 2-A
+

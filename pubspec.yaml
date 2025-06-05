@@ -15,7 +15,12 @@ dependencies:
 
   cupertino_icons: ^1.0.8
   google_fonts: ^6.2.1
+  file_picker: ^10.1.9
+  universal_io: ^2.2.2
+  intl: ^0.20.2
+  fl_chart: ^1.0.0
 
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -29,10 +34,8 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/candidates/DC001.jpg
-    - assets/candidates/MM002.jpg
-    - assets/candidates/RC003.jpg
-    - assets/candidates/placeholder.png
+    - assets/
+    
 
 flutter_launcher_icons:
   android: "launcher_icon"
@@ -51,4 +54,3 @@ flutter_launcher_icons:
   macos:
     generate: true
     image_path: "assets/icon/appicon.png"
- 

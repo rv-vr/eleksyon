@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../components/candidate.dart'; 
-import 'profile.dart';
-import '../components/constants.dart';
+import '../sample_data/candidate.dart'; 
+import 'candidateprofile.dart';
+import '../../components/constants.dart';
 
 class CandidateList extends StatefulWidget {
 

@@ -42,7 +42,7 @@ final List<Candidate> candidates = [
     year: "2nd Year",
     description:
         "A passionate computer science student with a keen interest in software development and data analysis.",
-    imagePath: "assets/candidates/DC001.jpg",
+    imagePath: "candidates/DC001.jpg",
     achievements: ["Dean's List 2022", "Hackathon Winner 2023"],
     partylist: "TDA",
     runningFor: "Governor",
@@ -71,7 +71,7 @@ final List<Candidate> candidates = [
     year: "2nd Year",
     description:
         "A passionate computer science student with a keen interest in software development and data analysis.",
-    imagePath: "assets/candidates/MM002.jpg",
+    imagePath: "candidates/MM002.jpg",
     achievements: ["Dean's List 2022", "Hackathon Winner 2023"],
     partylist: "CompuTeam",
     runningFor: "Vice Governor",

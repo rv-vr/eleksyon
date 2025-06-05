@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../components/constants.dart';
-import '../components/candidate.dart';
+import '../../components/constants.dart';
+import '../sample_data/candidate.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CandidateProfile extends StatelessWidget {

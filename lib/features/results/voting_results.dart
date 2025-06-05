@@ -34,125 +34,102 @@ class _VotingResultsPageState extends State<VotingResultsPage> {
 
   // Helper function to create chart data for fl_chart
   BarChartData _createBarChartData(List<CandidateResult> data, String? winnerId) {
-    final List<BarChartGroupData> barGroups = [];
-    double maxY = 0;
-    for (int i = 0; i < data.length; i++) {
-      final candidate = data[i];
-      if (candidate.voteCount > maxY) {
-        maxY = candidate.voteCount.toDouble();
-      }
-      barGroups.add(
-        BarChartGroupData(
-          x: i,
-          barRods: [
-            BarChartRodData(
-              toY: candidate.voteCount.toDouble(),
-              color: candidate.id == winnerId ? Colors.amber.shade600 : Constants.primaryColor,
-              width: 16, // Adjust bar width
-              borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(4),
-                topRight: Radius.circular(4),
-              ),
-            ),
-          ],
-          showingTooltipIndicators: [0], // Show tooltip for the first rod
-        ),
-      );
-    }
-    // Add a little padding to the top of the Y-axis
-    maxY = maxY == 0 ? 10 : maxY + (maxY * 0.1);
+    // 1) Compute maxY with 20% padding
+    double maxY = data.fold<double>(
+        0, (prev, c) => c.voteCount.toDouble().clamp(prev, double.infinity));
+    maxY = (maxY <= 0 ? 10 : maxY) * 1.2;
 
+    // 2) Build one BarChartGroupData per candidate
+    final barGroups = data.asMap().entries.map((e) {
+      final idx = e.key;
+      final c = e.value;
+      return BarChartGroupData(
+        x: idx,
+        barRods: [
+          BarChartRodData(
+            toY: c.voteCount.toDouble(),
+            color: c.id == winnerId
+                ? Colors.amber.shade600
+                : Constants.primaryColor,
+            width: 16,
+            borderRadius: const BorderRadius.vertical(top: Radius.circular(4)),
+          )
+        ],
+      );
+    }).toList();
 
     return BarChartData(
       alignment: BarChartAlignment.spaceAround,
       maxY: maxY,
-      barTouchData: BarTouchData(
-        enabled: true, // Enable touch interactions
-        touchTooltipData: BarTouchTooltipData(
-          tooltipPadding: const EdgeInsets.all(8),
-          tooltipMargin: 8,
-          getTooltipItem: (group, groupIndex, rod, rodIndex) {
-            final candidate = data[group.x.toInt()];
-            return BarTooltipItem(
-              '${candidate.name}\n',
-              GoogleFonts.inter(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 12),
-              children: <TextSpan>[
-                TextSpan(
-                  text: '${rod.toY.toInt()} votes',
-                  style: GoogleFonts.inter(color: Colors.white, fontSize: 11, fontWeight: FontWeight.w500),
-                ),
-              ],
-            );
-          },
-        ),
-      ),
+      barGroups: barGroups,
+
+      // 3) Titles on bottom and left
       titlesData: FlTitlesData(
-        show: true,
         bottomTitles: AxisTitles(
           sideTitles: SideTitles(
             showTitles: true,
-            reservedSize: 30, // Space for bottom titles
-            getTitlesWidget: (double value, TitleMeta meta) {
-              final index = value.toInt();
-              if (index >= 0 && index < data.length) {
-                return Padding(
-                  padding: const EdgeInsets.only(top: 6.0),
-                  child: Text(
-                    data[index].name.split(' ').first, // Show first name
-                    style: GoogleFonts.inter(color: Colors.black54, fontWeight: FontWeight.w600, fontSize: 10),
-                  ),
-                );
-              }
-              return const Text('');
+            getTitlesWidget: (value, meta) {
+              final i = value.toInt();
+              if (i < 0 || i >= data.length) return const SizedBox();
+              return Text(
+                data[i].name.split(' ').first,
+                style: const TextStyle(
+                    fontSize: 10, fontWeight: FontWeight.bold),
+              );
             },
+            reservedSize: 30,
           ),
         ),
         leftTitles: AxisTitles(
           sideTitles: SideTitles(
             showTitles: true,
-            reservedSize: 35, // Space for left titles
             getTitlesWidget: (value, meta) {
-              return const Text(''); // Hide left titles
+              // only label multiples of maxY/5
+              final step = (maxY / 5).ceil();
+              if (value % step != 0.0 && value != maxY && value != 0.0) {
+                return const SizedBox();
+              }
+              return Text(
+                value.toInt().toString(),
+                style: const TextStyle(fontSize: 10),
+              );
             },
+            reservedSize: 35,
           ),
         ),
-        topTitles: AxisTitles(
-          sideTitles: SideTitles(
-            showTitles: true,
-            reservedSize: 40, // Space for top titles
-            getTitlesWidget: (value, meta) {
-              return const Text(''); // Hide top titles
-            },
-          ),
-        ),
-        rightTitles: AxisTitles(
-          sideTitles: SideTitles(
-            showTitles: true,
-            reservedSize: 30, // Space for right titles
-            getTitlesWidget: (value, meta) {
-              return const Text(''); // Hide right titles
-            },
-          ),
-        ),
+        rightTitles: const AxisTitles(),
+        topTitles: const AxisTitles(),
       ),
+
+      // 4) Simple grid & border
       gridData: FlGridData(
         show: true,
-        drawVerticalLine: true,
-        drawHorizontalLine: true,
-        verticalInterval: 1,
-        horizontalInterval: 10,
-        getDrawingHorizontalLine: (value) {
-          return FlLine(
-            color: Colors.grey.shade300,
-            strokeWidth: 1,
-          );
-        },
-        getDrawingVerticalLine: (value) {
-          return FlLine(
-            color: Colors.grey.shade300,
-            strokeWidth: 1,
-          );
-        },
+        drawVerticalLine: false,
+        horizontalInterval: (maxY / 5),
+        getDrawingHorizontalLine: (_) =>
+            FlLine(color: Colors.grey.shade300, strokeWidth: 1),
+      ),
+      borderData: FlBorderData(
+        show: true,
+        border: Border(
+          bottom: BorderSide(color: Colors.grey.shade300),
+          left: BorderSide(color: Colors.grey.shade300),
+        ),
+      ),
+
+      // 5) Enable tooltips with default styling
+      barTouchData: BarTouchData(
+        enabled: true,
+        touchTooltipData: BarTouchTooltipData(
+          getTooltipItem:
+              (group, groupIndex, rod, rodIndex) {
+            final c = data[group.x.toInt()];
+            return BarTooltipItem(
+              '${c.name}\n${c.voteCount} votes',
+              const TextStyle(color: Colors.white),
+            );
+          },
+        ),
       ),
     );
   }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart'; // Assuming you use GoogleFonts for consistency
-import 'package:eleksyon/components/constants.dart'; // Assuming you use Constants for colors
+import 'package:google_fonts/google_fonts.dart'; 
+import 'package:eleksyon/components/constants.dart'; 
 
 Future<bool?> showVoteConfirmationModal(
   BuildContext context, {

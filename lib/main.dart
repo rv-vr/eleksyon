@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import './components/bottomnavbar.dart';
 import 'features/candidates/candidatelist.dart';
-import 'features/dashboard/dashboard.dart'; // Import for Voter Dashboard
-import 'features/schedule/election_schedule.dart'; // Import for Election Schedule
+import 'features/dashboard/dashboard.dart'; 
+import 'features/schedule/election_schedule.dart';
 
 void main() {
   runApp(const EleksyonUI());
@@ -44,15 +44,14 @@ class EleksyonUIUI extends StatefulWidget {
 }
 
 class _EleksyonUIUIState extends State<EleksyonUIUI> {
-  int pageIndex = 0; // Default to the first tab (Voter Dashboard)
+  int pageIndex = 0; 
 
-  // Define the pages for the IndexedStack
   final List<Widget> _pages = [
-    const VoterDashboardPage(),      // Tab 1 (index 0)
-    const CandidateList(),           // Tab 2 (index 1) - Assuming this was your previous second tab
-    const ElectionSchedulePage(),    // Tab 3 (index 2)
-    const VotingResultsPage(),       // Tab 4 (index 3) - Main results page
-    const UserProfileSettings(),     // Tab 5 (index 4) - Assuming this was your previous last tab
+    const VoterDashboardPage(),      
+    const CandidateList(),           
+    const ElectionSchedulePage(),    
+    const VotingResultsPage(),       
+    const UserProfileSettings(),     
   ];
 
   void updateState(int tabIndex) {
@@ -63,16 +62,14 @@ class _EleksyonUIUIState extends State<EleksyonUIUI> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold( // Assuming your main UI structure uses a Scaffold
+    return Scaffold( 
       body: IndexedStack(
         index: pageIndex,
         children: _pages,
       ),
-      bottomNavigationBar: BottomNavBar( // Your custom BottomNavBar
+      bottomNavigationBar: BottomNavBar(
         currentIndex: pageIndex,
         onTabSelected: updateState,
-        // Ensure your BottomNavBar is configured with 5 items
-        // and their icons/labels match these pages.
       ),
     );
   }

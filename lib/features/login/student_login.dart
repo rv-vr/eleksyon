@@ -151,8 +151,14 @@ class _StudentLoginState extends State<StudentLogin> {
       keyboardType: keyboardType,
       decoration: InputDecoration(
         labelText: label,
-        border: OutlineInputBorder(
+        labelStyle: TextStyle(color: Constants.primaryColor),
+        enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide(color: Constants.primaryColor.withOpacity(0.5)),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide(color: Constants.primaryColor, width: 2),
         ),
       ),
     );

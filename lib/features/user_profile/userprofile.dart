@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'dart:typed_data';
 import 'package:eleksyon/components/constants.dart';
+import 'package:eleksyon/features/login/onboarding.dart';
 import 'package:eleksyon/features/sample_data/users.dart';
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
@@ -372,6 +373,7 @@ class _UserProfileSettingsState extends State<UserProfileSettings> {
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: TextButton.icon(
                       onPressed: () {
+                        OnboardingPage();
                         // Change Log out
                       },
                       icon: const Icon(Icons.logout, color: Colors.red),

@@ -172,7 +172,6 @@ class _VotingResultsPageState extends State<VotingResultsPage> {
                               style: GoogleFonts.inter(fontSize: 20, fontWeight: FontWeight.w900, color: Constants.primaryColor),
                             ),
                             const SizedBox(height: 10),
-                            // Chart for vote distribution
                             Container(
                               height: 200,
                               margin: const EdgeInsets.symmetric(vertical: 10),

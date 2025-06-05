@@ -37,27 +37,6 @@ class _CandidateManagementPageState extends State<CandidateManagementPage> {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  // Placeholder for Image Picker
-                  // Center(
-                  //   child: Stack(
-                  //     children: [
-                  //       CircleAvatar(
-                  //         radius: 40,
-                  //         backgroundColor: Colors.grey.shade200,
-                  //         // backgroundImage: selectedImageBytes != null ? MemoryImage(selectedImageBytes) : (candidate?.imagePath != null ? AssetImage(candidate!.imagePath!) : null),
-                  //         // child: selectedImageBytes == null && candidate?.imagePath == null ? Icon(Icons.person, size: 40, color: Colors.grey) : null,
-                  //       ),
-                  //       Positioned(
-                  //         bottom: 0, right: 0,
-                  //         child: InkWell(
-                  //           onTap: () async { /* Implement image picking */ },
-                  //           child: CircleAvatar(radius: 15, backgroundColor: Constants.primaryColor, child: Icon(Icons.edit, size: 15, color: Constants.secondaryColor)),
-                  //         ),
-                  //       )
-                  //     ],
-                  //   ),
-                  // ),
-                  // const SizedBox(height: 16),
                   _buildTextFormField(initialValue: name, label: 'Full Name', onSaved: (val) => name = val!),
                   _buildTextFormField(initialValue: course, label: 'Course/Program', onSaved: (val) => course = val!),
                   _buildTextFormField(initialValue: year, label: 'Year Level', onSaved: (val) => year = val!),
@@ -83,15 +62,13 @@ class _CandidateManagementPageState extends State<CandidateManagementPage> {
                   setState(() {
                     if (candidate == null) {
                       _candidates.add(AdminCandidate(
-                        id: DateTime.now().millisecondsSinceEpoch.toString(), // Simple unique ID
+                        id: DateTime.now().millisecondsSinceEpoch.toString(),
                         name: name, course: course, year: year, runningFor: runningFor, party: party,
-                        imagePath: 'candidates/placeholder.png' // Default or use picked image
-                        // imageBytes: selectedImageBytes,
+                        imagePath: 'candidates/placeholder.png' 
                       ));
                     } else {
                       candidate.name = name; candidate.course = course; candidate.year = year;
                       candidate.runningFor = runningFor; candidate.party = party;
-                      // candidate.imageBytes = selectedImageBytes ?? candidate.imageBytes; // Update image if new one picked
                     }
                   });
                   Navigator.of(context).pop();

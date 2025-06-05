@@ -16,7 +16,7 @@ class CandidateVoteItem {
   final String id;
   final String name;
   final String party;
-  final String imageUrl; // Asset path or network URL
+  final String imageUrl; 
 
   CandidateVoteItem({
     required this.id,

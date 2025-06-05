@@ -1,3 +1,4 @@
+import 'package:eleksyon/components/constants.dart';
 import 'package:eleksyon/features/login/admin_login.dart';
 import 'package:eleksyon/features/login/register.dart';
 import 'package:flutter/material.dart';
@@ -76,7 +77,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                     _buildButton(
                       icon: Icons.school,
                       label: 'Student Login',
-                      color: Colors.blue.shade800,
+                      color: Constants.primaryColor,
                       onTap: () {
                         Navigator.push(context, MaterialPageRoute(
                           builder: (context) => StudentLogin(),
@@ -87,7 +88,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                     _buildButton(
                       icon: Icons.admin_panel_settings,
                       label: 'Admin Login',
-                      color: Colors.blue.shade700,
+                      color: Constants.primaryColor,
                       onTap: () {
                         Navigator.push(context, MaterialPageRoute(
                           builder: (context) => AdminLoginForm(),
@@ -98,7 +99,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                     _buildButton(
                       icon: Icons.app_registration,
                       label: 'Register',
-                      color: Colors.blue.shade600,
+                      color: Constants.primaryColor,
                       onTap: () {
                         Navigator.push(context, MaterialPageRoute(
                           builder: (context) => RegisterForm(),
@@ -111,13 +112,13 @@ class _OnboardingPageState extends State<OnboardingPage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(Icons.verified_user, size: 18, color: Colors.blue.shade500),
+                        Icon(Icons.verified_user, size: 18, color: Constants.primaryColor),
                         SizedBox(width: 6),
                         Text(
                           'Secure and Trusted Voting App',
                           style: TextStyle(
                             fontSize: 12,
-                            color: Colors.blue.shade500,
+                            color: Constants.primaryColor,
                           ),
                         ),
                       ],

@@ -5,8 +5,7 @@ class AdminCandidate {
   String year;
   String runningFor;
   String party;
-  String? imagePath; // For existing images (asset path)
-  // Uint8List? imageBytes; // For new/edited image from picker
+  String? imagePath; 
 
   AdminCandidate({
     required this.id,
@@ -16,6 +15,5 @@ class AdminCandidate {
     required this.runningFor,
     required this.party,
     this.imagePath,
-    // this.imageBytes,
   });
 }

@@ -46,7 +46,7 @@ class _VoterDashboardPageState extends State<VoterDashboardPage> {
       setState(() {
         position.hasVoted = true;
       });
-      if (mounted) { // Check if the widget is still in the tree
+      if (mounted) { 
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text('Successfully voted for $candidateName in ${position.title}!', style: GoogleFonts.inter()),
@@ -56,7 +56,6 @@ class _VoterDashboardPageState extends State<VoterDashboardPage> {
         );
       }
     } else {
-      // Optional: Show a message if the user cancelled
       if (mounted) {
          ScaffoldMessenger.of(context).showSnackBar(
            SnackBar(
@@ -73,7 +72,7 @@ class _VoterDashboardPageState extends State<VoterDashboardPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false, // No back button if it's a main tab
+        automaticallyImplyLeading: false,
         title: Text(
           'Eleksyon Dashboard',
           style: GoogleFonts.inter(
@@ -120,7 +119,7 @@ class _VoterDashboardPageState extends State<VoterDashboardPage> {
             else
               ListView.builder(
                 shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(), // To use inside SingleChildScrollView
+                physics: const NeverScrollableScrollPhysics(), 
                 itemCount: _electionPositions.length,
                 itemBuilder: (context, index) {
                   final position = _electionPositions[index];
@@ -129,12 +128,12 @@ class _VoterDashboardPageState extends State<VoterDashboardPage> {
                     margin: const EdgeInsets.only(bottom: 16.0),
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                     child: ExpansionTile(
-                      key: PageStorageKey(position.id), // Preserve expansion state
+                      key: PageStorageKey(position.id), 
                       backgroundColor: Constants.primaryColor.withAlpha(10),
                       collapsedBackgroundColor: Constants.secondaryColor,
                       iconColor: Constants.primaryColor,
                       collapsedIconColor: Constants.primaryColor,
-                      initiallyExpanded: !position.hasVoted, // Expand if not voted
+                      initiallyExpanded: !position.hasVoted, 
                       title: Text(
                         position.title,
                         style: GoogleFonts.inter(
@@ -160,7 +159,7 @@ class _VoterDashboardPageState extends State<VoterDashboardPage> {
                             children: [
                               CircleAvatar(
                                 radius: 28,
-                                backgroundImage: AssetImage(candidate.imageUrl), // Ensure asset path is correct
+                                backgroundImage: AssetImage(candidate.imageUrl),
                                 backgroundColor: Colors.grey.shade200,
                               ),
                               const SizedBox(width: 16),
@@ -182,8 +181,8 @@ class _VoterDashboardPageState extends State<VoterDashboardPage> {
                               const SizedBox(width: 8),
                               ElevatedButton(
                                 onPressed: position.hasVoted
-                                    ? null // Disable button if already voted
-                                    : () => _handleVote(position.id, candidate.id, candidate.name), // Calls the updated _handleVote
+                                    ? null 
+                                    : () => _handleVote(position.id, candidate.id, candidate.name), 
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: Constants.primaryColor,
                                   foregroundColor: Constants.secondaryColor,

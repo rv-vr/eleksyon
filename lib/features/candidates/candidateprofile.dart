@@ -4,8 +4,8 @@ import '../sample_data/candidate.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CandidateProfile extends StatelessWidget {
-  final Function(int) onBackState;  // Callback function to update state
-  final Candidate candidate; // Candidate object
+  final Function(int) onBackState; 
+  final Candidate candidate;
 
   const CandidateProfile({super.key, required this.onBackState, required this.candidate});
 

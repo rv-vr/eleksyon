@@ -1,19 +1,7 @@
-import 'package:eleksyon/components/constants.dart'; // Import your Constants
+import 'package:eleksyon/components/constants.dart'; 
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart'; // Import GoogleFonts
-
-// Placeholder for your actual data model
-class VoterHistoryItem {
-  final String electionTitle;
-  final String votedForCandidateName;
-  final DateTime electionDate;
-
-  VoterHistoryItem({
-    required this.electionTitle,
-    required this.votedForCandidateName,
-    required this.electionDate,
-  });
-}
+import 'package:google_fonts/google_fonts.dart'; 
+import '../models/voter_history_model.dart';
 
 class VoterHistoryPage extends StatefulWidget {
   const VoterHistoryPage({super.key});
@@ -23,7 +11,6 @@ class VoterHistoryPage extends StatefulWidget {
 }
 
 class _VoterHistoryPageState extends State<VoterHistoryPage> {
-  // Sample data - replace this with your actual data fetching logic
   final List<VoterHistoryItem> _electionHistory = [
     VoterHistoryItem(
       electionTitle: 'Student Council President 2025',
@@ -40,7 +27,6 @@ class _VoterHistoryPageState extends State<VoterHistoryPage> {
       votedForCandidateName: 'Option Gryphon',
       electionDate: DateTime(2023, 11, 5),
     ),
-    // Add more items as needed
   ];
 
   @override
@@ -58,13 +44,13 @@ class _VoterHistoryPageState extends State<VoterHistoryPage> {
           style: GoogleFonts.inter(
             fontWeight: FontWeight.w900,
             color: Constants.primaryColor,
-            fontSize: 20, // Adjusted for AppBar
+            fontSize: 20, 
           ),
         ),
-        backgroundColor: Constants.secondaryColor, // White background for AppBar
-        elevation: 1.0, // Subtle elevation
+        backgroundColor: Constants.secondaryColor, 
+        elevation: 1.0, 
         iconTheme: const IconThemeData(
-          color: Constants.primaryColor, // Back arrow color
+          color: Constants.primaryColor, 
         ),
       ),
       body: _electionHistory.isEmpty
@@ -79,16 +65,16 @@ class _VoterHistoryPageState extends State<VoterHistoryPage> {
               ),
             )
           : ListView.builder(
-              padding: const EdgeInsets.all(16.0), // Consistent padding
+              padding: const EdgeInsets.all(16.0), 
               itemCount: _electionHistory.length,
               itemBuilder: (context, index) {
                 final item = _electionHistory[index];
                 return Container(
-                  margin: const EdgeInsets.only(bottom: 12.0), // Spacing between items
+                  margin: const EdgeInsets.only(bottom: 12.0),
                   padding: const EdgeInsets.all(16.0),
                   decoration: BoxDecoration(
-                    color: Constants.primaryColor.withAlpha(20), // Light background like in CandidateList
-                    borderRadius: BorderRadius.circular(12.0), // Rounded corners
+                    color: Constants.primaryColor.withAlpha(20),
+                    borderRadius: BorderRadius.circular(12.0),
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -96,7 +82,7 @@ class _VoterHistoryPageState extends State<VoterHistoryPage> {
                       Text(
                         item.electionTitle,
                         style: GoogleFonts.inter(
-                          fontWeight: FontWeight.w800, // Bold title
+                          fontWeight: FontWeight.w800, 
                           fontSize: 17,
                           color: Constants.primaryColor,
                         ),
@@ -107,7 +93,7 @@ class _VoterHistoryPageState extends State<VoterHistoryPage> {
                         style: GoogleFonts.inter(
                           fontSize: 12,
                           fontWeight: FontWeight.w500,
-                          color: Constants.primaryColor.withAlpha(150), // Softer color for date
+                          color: Constants.primaryColor.withAlpha(150), 
                         ),
                       ),
                       const SizedBox(height: 8),
@@ -116,7 +102,7 @@ class _VoterHistoryPageState extends State<VoterHistoryPage> {
                         style: GoogleFonts.inter(
                           fontSize: 14,
                           fontWeight: FontWeight.w600,
-                          color: Colors.black87, // Darker text for voted candidate
+                          color: Colors.black87, 
                         ),
                       ),
                     ],

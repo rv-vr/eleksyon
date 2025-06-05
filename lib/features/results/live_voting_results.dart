@@ -1,39 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:eleksyon/components/constants.dart';
-import 'package:fl_chart/fl_chart.dart'; // Import fl_chart
-// import 'dart:async';
-// import 'dart:math';
+import 'package:fl_chart/fl_chart.dart';
+import '../models/live_results_modal.dart';
 
-// --- Placeholder Models ---
-class LivePositionResult {
-  final String positionId;
-  final String positionTitle;
-  final List<LiveCandidateResult> candidateResults;
-
-  LivePositionResult({
-    required this.positionId,
-    required this.positionTitle,
-    required this.candidateResults,
-  });
-}
-
-class LiveCandidateResult {
-  final String id;
-  final String name;
-  int voteCount;
-  final String party;
-  final String imageUrl;
-
-  LiveCandidateResult({
-    required this.id,
-    required this.name,
-    required this.voteCount,
-    required this.party,
-    required this.imageUrl,
-  });
-}
-// --- End Placeholder Models ---
 
 class LiveVotingResultsPage extends StatefulWidget {
   const LiveVotingResultsPage({super.key});
@@ -62,7 +32,6 @@ class _LiveVotingResultsPageState extends State<LiveVotingResultsPage> {
 
   String? _selectedPositionId;
   LivePositionResult? _currentDisplayResult;
-  // Timer? _updateTimer; // For live simulation
 
   @override
   void initState() {
@@ -71,24 +40,7 @@ class _LiveVotingResultsPageState extends State<LiveVotingResultsPage> {
       _selectedPositionId = _allLiveResults.first.positionId;
       _filterResults(_selectedPositionId);
     }
-    // Simulate live updates (uncomment if needed)
-    // _updateTimer = Timer.periodic(const Duration(seconds: 2), (timer) {
-    //   if (_currentDisplayResult != null && mounted) {
-    //     setState(() {
-    //       for (var candidate in _currentDisplayResult!.candidateResults) {
-    //         candidate.voteCount += Random().nextInt(3); // Add 0, 1, or 2 votes
-    //       }
-    //       _currentDisplayResult!.candidateResults.sort((a, b) => b.voteCount.compareTo(a.voteCount));
-    //     });
-    //   }
-    // });
   }
-
-  // @override
-  // void dispose() {
-  //   _updateTimer?.cancel();
-  //   super.dispose();
-  // }
 
   void _filterResults(String? positionId) {
     setState(() {

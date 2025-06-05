@@ -33,7 +33,7 @@ class _ElectionSchedulePageState extends State<ElectionSchedulePage> {
 
   @override
   Widget build(BuildContext context) {
-    _schedule.sort((a, b) => a.startDate.compareTo(b.startDate)); // Ensure chronological order
+    _schedule.sort((a, b) => a.startDate.compareTo(b.startDate));
 
     return Scaffold(
       appBar: AppBar(
